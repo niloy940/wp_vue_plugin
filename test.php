@@ -3,7 +3,7 @@
  * Plugin Name: Product Vue
  * Description: Woocommerce Product Page Development.
  * Author: Niloy Quazi
- * Author URI: about.me/quazi
+ * Author URI: #
  */
 
 //Register scripts to use
