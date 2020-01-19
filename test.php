@@ -64,6 +64,7 @@ function func_wp_vue()
                     </div>
 
                     <modal v-if="showModal" @close="showModal=false">
+                      {{row_three}}
                       <img src="https://www.ic-myron.com/cf/HybrisProd/ConfigExpress/PreviewImageCalc/StreamView.cfm?comp=AU&qsn=K12009788&itemno=WF98803A&AreaPhyG=PBF&FontID=MYRONDR&logo=&impline1=.&impline2=&impline3=&AutoCalculateFontSizeForPreview=Y">
                     </modal>
 
