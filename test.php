@@ -37,12 +37,15 @@ function func_wp_vue()
     wp_enqueue_style('wpvue_style');
     wp_enqueue_style('my_style');
 
+
+    $sale_price = get_post_meta(get_the_ID(), '_sale_price', true);
+
     //Build String
-    $display = "<div id='divWpVue'>"
+    echo "<div id='divWpVue'>"
     .'<calc></calc>'
     .'<br>'
     .'
-          <p>Select personalization type</p>
+          <p>Select any personalization type</p>
         <tabs>
             <tab name="Insert Text" :selected="true">
                 <div>
@@ -106,8 +109,22 @@ function func_wp_vue()
     .'</div>';
 
     //Return to display
-    return $display;
-} // end function
+    // return $display;
+}
 
 //Add shortcode to WordPress
-add_shortcode('wpvue', 'func_wp_vue');
+// add_shortcode('wpvue', 'func_wp_vue');
+
+add_action('woocommerce_before_add_to_cart_form', 'func_wp_vue');
+
+
+
+/////
+// remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+
+function testing()
+{
+    return '100';
+}
+
+add_filter('woocommerce_cart_item_price', 'testing');

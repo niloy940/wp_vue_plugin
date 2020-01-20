@@ -2,21 +2,37 @@ Vue.component('calc', {
     template: `
     <div>
         Quantity :
-        <input type="text" v-model="amount" class="width:15px;" @keyup="calclulation">
-        x € 2,19 + 25 Gratis = € {{ total }}
+        <input type="number" v-model="quantity" class="width:10px;" @keyup="calclulation">
+        x € {{ price }} + {{ free }} Gratis = € {{ total }}
     </div>
     `,
 
     data() {
         return {
-            amount: 50,
-            total: 10950,
+            quantity: 100,
+            price: 0.69,
+            total: 69,
+            free: 50,
         }
   },
 
   methods: {
       calclulation() {
-        this.total = this.amount * 219;
+        if (this.quantity >= 100 && this.quantity <= 249) {
+            this.price = 0.69;
+        } else if(this.quantity >= 250 && this.quantity <= 499) {
+            this.price = 0.59;
+        } else if(this.quantity >= 500 && this.quantity <= 999) {
+            this.price = 0.55;
+        } else if(this.quantity >= 1000) {
+            this.price = 0.49;
+        } else {
+            this.price = 0.69;
+        }
+
+        this.free = this.quantity / 2;
+
+        this.total = this.quantity * this.price;
       }
   },
 });
